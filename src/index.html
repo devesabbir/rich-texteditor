@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rich-Text Editor</title>
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="editor-container">
+        <div class="button-area">
+          <button id="bold" class="format-btn">
+            <i class="fa-sharp fa-solid fa-bold"></i>
+          </button>
+          <button id="italic" class="format-btn">
+            <i class="fa-sharp fa-solid fa-italic"></i>
+          </button>
+          <button id="underline" class="format-btn">
+            <i class="fa-sharp fa-solid fa-underline"></i>
+          </button>
+
+          <button><i class="fa-sharp fa-solid fa-list"></i></button>
+          <button onclick="formatText('undo')">
+            <i class="fa-regular fa-rotate-left"></i>
+          </button>
+          <button onclick="formatText('redo')">
+            <i class="fa-regular fa-rotate-right"></i>
+          </button>
+
+          <button><i class="fa-sharp fa-solid fa-link"></i></button>
+          <button><i class="fa-sharp fa-solid fa-link-slash"></i></button>
+
+          <button id="justifyLeft" class="align-btn">
+            <i class="fa-regular fa-align-left"></i>
+          </button>
+          <button id="justifyCenter" class="align-btn">
+            <i class="fa-regular fa-align-center"></i>
+          </button>
+          <button id="justifyRight" class="align-btn">
+            <i class="fa-regular fa-align-right"></i>
+          </button>
+          <button id="justifyFull" class="align-btn">
+            <i class="fa-regular fa-align-justify"></i>
+          </button>
+
+          <!-- Heading -->
+          <select name="" id="heading">
+            <option value="H1">H1</option>
+            <option value="H2">H2</option>
+            <option value="H3">H3</option>
+            <option value="H4">H4</option>
+            <option value="H5">H5</option>
+            <option value="H6">H6</option>
+          </select>
+
+          <!-- font family -->
+
+          <select name="" id="font-family"></select>
+
+          <!-- Font Size -->
+
+          <select name="" id="font-size"></select>
+
+          <!-- color -->
+          <div class="color-wrapper">
+            <input
+              onchange="formatText('backColor', this.value);"
+              id="bg-color"
+              type="color"
+            />
+            <label for="bg-color">Highlight Color</label>
+          </div>
+          <div class="color-wrapper">
+            <input
+              onchange="formatText('foreColor', this.value);"
+              id="font-color"
+              type="color"
+            />
+            <label for="font-color">Font Color</label>
+          </div>
+        </div>
+
+        <div class="text-area" id="editor" contenteditable="true"></div>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

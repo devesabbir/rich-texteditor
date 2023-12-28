@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Rich Text Editor</title>
+    <style>
+      #toolbar {
+        margin-bottom: 10px;
+      }
+
+      button {
+        margin-right: 5px;
+      }
+
+      #editor {
+        border: 1px solid #ccc;
+        padding: 10px;
+        min-height: 200px;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toolbar">
+      <button onclick="formatText('bold')">Bold</button>
+      <button onclick="formatText('italic')">Italic</button>
+      <button onclick="formatText('underline')">Underline</button>
+      <input
+        type="color"
+        id="colorPicker"
+        onchange="formatText('foreColor', this.value)"
+      />
+    </div>
+
+    <div id="editor" contenteditable="true"></div>
+
+    <script>
+      function formatText(command, value = null) {
+        if (document.queryCommandSupported(command)) {
+          document.execCommand(command, false, value);
+        } else {
+          console.error(command + " is not supported");
+        }
+      }
+
+      // Event listener for color picker
+      document
+        .getElementById("colorPicker")
+        .addEventListener("input", function () {
+          formatText("foreColor", this.value);
+        });
+    </script>
+  </body>
+</html>
